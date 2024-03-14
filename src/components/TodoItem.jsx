@@ -43,9 +43,9 @@ function TodoItem({ todo }) {
     <>
       <motion.div className="flex items-center justify-between py-4 px-6 border-b border-gray-200 transition duration-300 ease-in-out" variants={child}>
         <div className="flex items-center space-x-4">
-          <CheckButton checked={checked} handleCheck={handleCheck} />
+          <CheckButton c checked={checked} handleCheck={handleCheck} />
           <div className={`flex flex-col ${checked ? 'line-through text-yellow-500' : 'text-yellow-300'}`}>
-            <p className="text-lg font-semibold">{todo.title}</p>
+            <p className="text-xl  font-semibold">{todo.title}</p>
             <p className="text-sm">{format(new Date(todo.time), 'p, MM/dd/yyyy')}</p>
           </div>
         </div>

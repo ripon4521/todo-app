@@ -37,7 +37,7 @@ function AppContent() {
 
   return (
     <motion.div
-      className="flex items-center justify-center flex-col gap-5 p-5 bg-lime-500 w-1/3 rounded-md"
+      className="flex items-center justify-center flex-col gap-5 p-5 bg-lime-500 lg:w-[30%] md:w-[70%] rounded-md"
       variants={container}
       initial="hidden"
       animate="visible"

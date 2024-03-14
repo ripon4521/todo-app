@@ -30,7 +30,8 @@ function AppHeader() {
       >
         <option value="all">All</option>
         <option value="incomplete">Incomplete</option>
-        <option value="complete">Completed</option>
+        <option value="complete">Complete</option>
+      
       </select>
       <TodoModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </div>
