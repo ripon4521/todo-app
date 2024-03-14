@@ -54,7 +54,7 @@ function AppContent() {
           </motion.div>
         ))
       ) : (
-        <motion.p variants={child} className="text-white-500 text-center ">
+        <motion.p variants={child} className="text-white text-center ">
           No Todos
         </motion.p>
       )}
