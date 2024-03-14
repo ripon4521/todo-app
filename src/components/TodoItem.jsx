@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { format } from "date-fns";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { motion } from "framer-motion";
-import toast from "react-hot-toast";
-
+// import toast from "react-hot-toast";
+import toast, { Toaster } from 'react-hot-toast';
 import { deleteTodo, updateTodo } from "../slice/slices";
 import CheckButton from "./CheckButton";
 import TodoModal from "./TodoModal";
@@ -43,6 +43,10 @@ function TodoItem({ todo }) {
 
   return (
     <>
+     <Toaster
+  position="bottom-right"
+  reverseOrder={false}
+/>
       <motion.div
         className="flex items-center justify-between py-4 px-6 border-b border-gray-200 transition duration-300 ease-in-out"
         variants={child}

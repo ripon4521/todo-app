@@ -3,9 +3,10 @@ import { v4 as uuid } from "uuid";
 import { MdOutlineClose } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { format } from "date-fns";
 import { addTodo, updateTodo } from "../slice/slices";
+import toast, { Toaster } from 'react-hot-toast';
 // import Button from './Button';
 
 const dropIn = {
@@ -84,6 +85,10 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
+          <Toaster
+  position="bottom-right"
+  reverseOrder={false}
+/>
           <motion.div
             className="bg-slate-700 bg-opacity-80 rounded-lg overflow-hidden shadow-lg p-8"
             variants={dropIn}
