@@ -1,11 +1,11 @@
-import  { useEffect, useState } from 'react';
-import { v4 as uuid } from 'uuid';
-import { MdOutlineClose } from 'react-icons/md';
-import { useDispatch } from 'react-redux';
-import { AnimatePresence, motion } from 'framer-motion';
-import toast from 'react-hot-toast';
-import { format } from 'date-fns';
-import { addTodo, updateTodo } from '../slice/slices';
+import { useEffect, useState } from "react";
+import { v4 as uuid } from "uuid";
+import { MdOutlineClose } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { AnimatePresence, motion } from "framer-motion";
+import toast from "react-hot-toast";
+import { format } from "date-fns";
+import { addTodo, updateTodo } from "../slice/slices";
 // import Button from './Button';
 
 const dropIn = {
@@ -18,7 +18,7 @@ const dropIn = {
     opacity: 1,
     transition: {
       duration: 0.1,
-      type: 'spring',
+      type: "spring",
       damping: 25,
       stiffness: 500,
     },
@@ -31,43 +31,43 @@ const dropIn = {
 
 function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState('');
-  const [status, setStatus] = useState('incomplete');
+  const [title, setTitle] = useState("");
+  const [status, setStatus] = useState("incomplete");
 
   useEffect(() => {
-    if (type === 'update' && todo) {
+    if (type === "update" && todo) {
       setTitle(todo.title);
       setStatus(todo.status);
     } else {
-      setTitle('');
-      setStatus('incomplete');
+      setTitle("");
+      setStatus("incomplete");
     }
   }, [type, todo, modalOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title === '') {
-      toast.error('Please enter a title');
+    if (title === "") {
+      toast.error("Please enter a title");
       return;
     }
     if (title && status) {
-      if (type === 'add') {
+      if (type === "add") {
         dispatch(
           addTodo({
             id: uuid(),
             title,
             status,
-            time: format(new Date(), 'p, MM/dd/yyyy'),
+            time: format(new Date(), "p, MM/dd/yyyy"),
           })
         );
-        toast.success('Task added successfully');
+        toast.success("Task added successfully");
       }
-      if (type === 'update') {
+      if (type === "update") {
         if (todo.title !== title || todo.status !== status) {
           dispatch(updateTodo({ ...todo, title, status }));
-          toast.success('Task Updated successfully');
+          toast.success("Task Updated successfully");
         } else {
-          toast.error('No changes made');
+          toast.error("No changes made");
           return;
         }
       }
@@ -100,12 +100,15 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
               </button>
             </div>
 
-            <form className='' onSubmit={(e) => handleSubmit(e)}>
+            <form className="" onSubmit={(e) => handleSubmit(e)}>
               <h1 className="text-2xl font-semibold mb-4 ">
-                {type === 'add' ? 'Add' : 'Update'} TODO
+                {type === "add" ? "Add" : "Update"} TODO
               </h1>
               <div className="mb-4">
-                <label htmlFor="title" className="block   text-white font-semibold">
+                <label
+                  htmlFor="title"
+                  className="block   text-white font-semibold"
+                >
                   Title
                 </label>
                 <input
@@ -117,7 +120,10 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="status" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="status"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Status
                 </label>
                 <select
@@ -131,10 +137,16 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                 </select>
               </div>
               <div className="flex justify-end space-x-2">
-                <button className='bg-lime-500 text-white px-2 py-1 rounded-md' type="submit" >
-                  {type === 'add' ? 'Add Task' : 'Update Task'}
+                <button
+                  className="bg-lime-500 text-white px-2 py-1 rounded-md"
+                  type="submit"
+                >
+                  {type === "add" ? "Add Task" : "Update Task"}
                 </button>
-                <button className='bg-lime-500 text-white px-2 py-1 rounded-md'  onClick={() => setModalOpen(false)}>
+                <button
+                  className="bg-lime-500 text-white px-2 py-1 rounded-md"
+                  onClick={() => setModalOpen(false)}
+                >
                   Cancel
                 </button>
               </div>

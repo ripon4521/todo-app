@@ -1,8 +1,8 @@
-import  { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 // import { Button, SelectButton } from './Button'; // Assuming Button and SelectButton components are implemented
-import TodoModal from './TodoModal';
-import { updateFilterStatus } from '../slice/slices';
+import TodoModal from "./TodoModal";
+import { updateFilterStatus } from "../slice/slices";
 
 function AppHeader() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -18,8 +18,10 @@ function AppHeader() {
 
   return (
     <div className="flex justify-center gap-20 md:gap-80 mt-5   ">
-      
-      <button className='bg-yellow-500 px-2 py-1 text-white rounded-md ' onClick={() => setModalOpen(true)} >
+      <button
+        className="bg-yellow-500 px-2 py-1 text-white rounded-md "
+        onClick={() => setModalOpen(true)}
+      >
         Add Task
       </button>
       <select
@@ -31,7 +33,6 @@ function AppHeader() {
         <option value="all">All</option>
         <option value="incomplete">Incomplete</option>
         <option value="complete">Complete</option>
-      
       </select>
       <TodoModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </div>
